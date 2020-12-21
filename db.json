@@ -1,0 +1,29 @@
+{
+    "invitations": [
+      { "id": 1, 
+        "name": "Jan", 
+        "surName": "Kowalski",
+        "eMail": "",
+        "phoneNumber": "+48555444851",
+        "parkingReservation": true,
+        "parkingPlateNumber": "",
+        "parkingSpot": "45",
+        "status": 1
+    },
+      { "id": 2, 
+        "name": "Jan", 
+        "surName": "Iksiński",
+        "eMail": "",
+        "phoneNumber": "+48856418",
+        "parkingReservation": false,
+        "parkingPlateNumber": "",
+        "parkingSpot": "",
+        "status": 0
+    }
+    ],
+    "dictionary": [
+      "Oczekujące",
+      "Potwierdzone",
+      "Odrzucone"
+    ]
+  }
