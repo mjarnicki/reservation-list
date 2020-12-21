@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(197,1,124,1) 0%, rgba(254,0,172,1) 100%);
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -229,4 +229,13 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+ion-button {
+  --box-shadow: none;
+}
+
+.modal-container {
+  --border-radius: 10px;
+  --box-shadow: none;
 }
