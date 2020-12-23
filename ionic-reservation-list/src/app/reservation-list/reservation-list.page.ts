@@ -13,6 +13,7 @@ export class ReservationListPage implements OnInit {
 
   reservations: Invitation[]
   dictionary: string[];
+  showMobile: boolean;
 
   constructor(
     private httpService: HttpService,
@@ -37,6 +38,12 @@ export class ReservationListPage implements OnInit {
         this.loadReservations();
       });
     }
+
+    this.checkWindowWidth(window.innerWidth);
+  }
+
+  onResize(event) {
+    this.checkWindowWidth(event.target.innerWidth);
   }
 
   loadReservations() {
@@ -61,7 +68,6 @@ export class ReservationListPage implements OnInit {
   }
 
   async newInvitationOpenModal() {
-
     const modal = await this.modalController.create({
       component: ModalPage,
       cssClass: 'modal-container'
@@ -74,4 +80,14 @@ export class ReservationListPage implements OnInit {
 
     return await modal.present();
   }
+
+  checkWindowWidth(width) {
+    if (width < 1200) {
+      this.showMobile = false;
+    } else {
+      this.showMobile = true;
+    }
+  }
+
+
 }

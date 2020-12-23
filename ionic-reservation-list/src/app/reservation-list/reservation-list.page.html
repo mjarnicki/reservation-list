@@ -1,90 +1,97 @@
-<ion-content>
-  <div class="reservation-list__container">
+<ion-content (window:resize)="onResize($event)">
+  <div class="reservation-list__container" >
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button (click)="newInvitationOpenModal()" color="primary">
+          <ion-button (click)="newInvitationOpenModal()" class="reservation-list__new-item-button" color="primary">
             <ion-icon slot="start" name="add"></ion-icon> Nowe zaproszenie
           </ion-button>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <div class="reservation-list__item reservation-list__item--header">
-            <div>
-              Id
-            </div>
-            <div>
-              Imię
-            </div>
-            <div>
-              Nazwisko
-            </div>
-            <div>
-              e-mail:
-            </div>
-            <div>
-              Numer telefonu:
-            </div>
-            <div>
-              Numer tablicy rejestracyjnej:
-            </div>
-            <div>
-              Miejsce parkingowe:
-            </div>
-            <div>
-              Status:
-            </div>
-            <div>
-              Operacje:
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row *ngFor="let singleRes of reservations">
-        <ion-col size="12">
-          <div class="reservation-list__item">
-            <div>
-              {{singleRes.id}}
-            </div>
-            <div>
-              {{singleRes.name}}
-            </div>
-            <div>
-              {{singleRes.surname}}
-            </div>
-            <div>
-              {{singleRes.email}}
-            </div>
-            <div>
-              {{singleRes.phone}}
-            </div>
-            <div>
-              {{singleRes.parkingPlateNumber}}
-            </div>
-            <div>
-              {{singleRes.parkingSpot}}
-            </div>
-            <div>
-              <span [ngClass]="singleRes.status | statusMark" class="reservation-list__status-mark"></span>
-              {{singleRes.status | statusName}}
-            </div>
-            <div>
-              <ion-buttons slot="start">
-                <ion-button size='small' (click)="updateReservation(singleRes.id, 1)">
-                  <ion-icon size='small' slot="icon-only" name="checkmark"></ion-icon>
-                </ion-button>
-                <ion-button size='small' (click)="updateReservation(singleRes.id, 2)">
-                  <ion-icon size='small' slot="icon-only" name="close"></ion-icon>
-                </ion-button>
-                <ion-button size='small' (click)="removeReservation(singleRes.id)">
-                    <ion-icon size='small' slot="icon-only" name="trash"></ion-icon>
-                </ion-button>
-              </ion-buttons>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
+
+      <!-- ponieważ widok mobilny różni się od desktopowego, całkowicie oddzieliłem od siebie oba widoki -->
+        <ion-row *ngIf="showMobile">
+          <ion-col size="12">
+            <ion-item class="reservation-list__item reservation-list__item--header">
+              <div>Id</div>
+              <div>Imię</div>
+              <div>Nazwisko</div>
+              <div>e-mail:</div>
+              <div>Numer telefonu:</div>
+              <div>Numer tablicy rejestracyjnej:</div>
+              <div>Miejsce parkingowe:</div>
+              <div>Status:</div>
+              <div>Operacje:</div>
+            </ion-item>
+            <ion-item class="reservation-list__item" *ngFor="let singleRes of reservations" lines="none">
+              <div>{{singleRes.id}}</div>
+              <div>{{singleRes.name}}</div>
+              <div>{{singleRes.surname}}</div>
+              <div>{{singleRes.email}}</div>
+              <div>{{singleRes.phone}}</div>
+              <div>{{singleRes.parkingPlateNumber}}</div>
+              <div>{{singleRes.parkingSpot}}</div>
+              <div>
+                <span [ngClass]="singleRes.status | statusMark" class="reservation-list__status-mark"></span>
+                {{singleRes.status | statusName}}
+              </div>
+              <div>
+                <ion-buttons slot="start">
+                  <ion-button size='small' (click)="updateReservation(singleRes.id, 1)">
+                    <ion-icon size='small' slot="icon-only" name="checkmark"></ion-icon>
+                  </ion-button>
+                  <ion-button size='small' (click)="updateReservation(singleRes.id, 2)">
+                    <ion-icon size='small' slot="icon-only" name="close"></ion-icon>
+                  </ion-button>
+                  <ion-button size='small' (click)="removeReservation(singleRes.id)">
+                      <ion-icon size='small' slot="icon-only" name="trash"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <!-- widok mobilny -->
+        <ion-row *ngIf="!showMobile">
+          <ion-col size="6" *ngFor="let singleRes of reservations">
+            <ion-card class="reservation-list__item-mobile" lines="none">
+                <ion-card-subtitle>
+                  <span [ngClass]="singleRes.status | statusMark" class="reservation-list__status-mark"></span>
+                  {{singleRes.status | statusName}}
+                </ion-card-subtitle>
+                <ion-card-header>
+                  <ion-card-subtitle>{{singleRes.id}}</ion-card-subtitle>
+                  <ion-card-title>{{singleRes.name}} {{singleRes.surname}}</ion-card-title>
+                </ion-card-header>
+              <div>{{singleRes.email}}</div>
+              <div>{{singleRes.phone}}</div>
+              <div>{{singleRes.parkingPlateNumber}}</div>
+              <div>{{singleRes.parkingSpot}}</div>
+              <div>
+                
+              </div>
+              <div>
+                <ion-buttons slot="start">
+                  <ion-button size='small' (click)="updateReservation(singleRes.id, 1)">
+                    <ion-icon size='small' slot="icon-only" name="checkmark"></ion-icon>
+                  </ion-button>
+                  <ion-button size='small' (click)="updateReservation(singleRes.id, 2)">
+                    <ion-icon size='small' slot="icon-only" name="close"></ion-icon>
+                  </ion-button>
+                  <ion-button size='small' (click)="removeReservation(singleRes.id)">
+                      <ion-icon size='small' slot="icon-only" name="trash"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </div>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+      <ng-container>
+
+      </ng-container>
+
     </ion-grid>
   </div>
   
