@@ -8,6 +8,9 @@ import { ReservationListPageRoutingModule } from './reservation-list-routing.mod
 
 import { ReservationListPage } from './reservation-list.page';
 
+import { StatusNamePipe } from '../pipes/status-name.pipe';
+import { StatusMarkPipe } from '../pipes/status-mark.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,6 @@ import { ReservationListPage } from './reservation-list.page';
     IonicModule,
     ReservationListPageRoutingModule
   ],
-  declarations: [ReservationListPage]
+  declarations: [ReservationListPage, StatusNamePipe, StatusMarkPipe]
 })
 export class ReservationListPageModule {}

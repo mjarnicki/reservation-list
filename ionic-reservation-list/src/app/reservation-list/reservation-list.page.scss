@@ -1,10 +1,55 @@
 .reservation-list{
     &__container{
-        max-width: 1000px;
+        max-width: 1400px;
         margin: 50px auto 0 auto;
     }
-    &__modal-container{
-        --background: #222;
+    &__item{
+        width: 100%;
+        border-radius: 10px;
+        padding: 0 1.5rem;
+        display: flex;
+        background-color: #fff;
+        min-height: 65px;
+        &--header{
+            color: white;
+            background-color: black;
+        }
+        div{
+            display: flex;
+            align-items: center;
+        }
+        div:nth-of-type(1){
+            width: 3%;
+        }
+        div:nth-of-type(2){
+            width: 9%;
+        }
+        div:nth-of-type(3){
+            width: 9%;
+        }
+        div:nth-of-type(4){
+            width: 11%;
+        }
+        div:nth-of-type(5){
+            width: 13%;
+        }
+        div:nth-of-type(6){
+            width: 18%;
+        }
+        div:nth-of-type(7){
+            width: 13%;
+        }
+        div:nth-of-type(8){
+            width: 12%;
+        }
+    }
+    &__status-mark{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        border-radius: 50%;
+        border: 1px solid var(--ion-color-medium);
     }
 }
 

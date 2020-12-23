@@ -12,7 +12,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   url = 'http://localhost:3000/'
-  dictionary: string[] = [];
+  dictionary: string;
 
   getInvitationList(): Observable<Invitation[]>{
     return this.http.get<Invitation[]>(this.url + 'invitations');
@@ -20,11 +20,17 @@ export class HttpService {
 
   loadDictionary() {
     return this.http.get<string[]>(this.url + 'dictionary')
-      .pipe(tap(console.log))
-      .pipe(map(body => this.dictionary))
   }
 
   addNewInvitation(invitation) {
     return this.http.post(this.url + 'invitations', invitation)
+  }
+  
+  updateStatus(id, object){
+    return this.http.patch(this.url + 'invitations/' + id, object)
+  }
+
+  removeStatus(id){
+    return this.http.delete(this.url + 'invitations/' + id)
   }
 }

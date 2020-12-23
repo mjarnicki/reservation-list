@@ -13,38 +13,65 @@ export class ReservationListPage implements OnInit {
 
   reservations: Invitation[]
   dictionary: string[];
-  dictionaryLoadFlag:boolean = false;
 
   constructor(
     private httpService: HttpService,
     public modalController: ModalController) { }
 
   ngOnInit() {
+
+    const dictionaryFromLocalStorage = localStorage.getItem('dictionary');
+    
+    // jeżeli w local storage jest słownik, to przypisuję do zmiennej słownik z local storage i ładuję rezerwacje 
+    if(dictionaryFromLocalStorage) {
+      
+      this.httpService.dictionary = dictionaryFromLocalStorage;
+      this.loadReservations();
+
+    } else {
+      // jeżeli nie ma słownika, to najpierw ładuję słownik, a później rezerwacje
+      this.httpService.loadDictionary().subscribe(dictionaryResp => {
+        
+        localStorage.setItem('dictionary', dictionaryResp.toString());
+        this.httpService.dictionary = dictionaryResp.toString();
+        this.loadReservations();
+      });
+    }
+  }
+
+  loadReservations() {
     this.httpService.getInvitationList().subscribe(reservationsResp => {
       this.reservations = reservationsResp;
     })
-
-    if (!this.dictionaryLoadFlag) {
-      this.httpService.loadDictionary().subscribe(dictionaryResp => {
-        this.dictionary = dictionaryResp
-        this.dictionaryLoadFlag = true;
-      });
-    }
-   
   }
 
-  loadDictionary() {
-    
+  updateReservation(id, status) {
+    const updateObject = {
+      status: status
+    }
+    this.httpService.updateStatus(id, updateObject).subscribe(() => {
+      this.loadReservations();
+    })
+  }
+
+  removeReservation(id) {
+    this.httpService.removeStatus(id).subscribe(() => {
+      this.loadReservations();
+    })
   }
 
   async newInvitationOpenModal() {
+
     const modal = await this.modalController.create({
       component: ModalPage,
       cssClass: 'modal-container'
     });
+
+    modal.onDidDismiss()
+      .then(() => {
+        this.loadReservations();
+    });
+
     return await modal.present();
   }
-
-
-
 }

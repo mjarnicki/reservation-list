@@ -9,11 +9,80 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="12">Tutaj będzie nagłówek</ion-col>
+        <ion-col size="12">
+          <div class="reservation-list__item reservation-list__item--header">
+            <div>
+              Id
+            </div>
+            <div>
+              Imię
+            </div>
+            <div>
+              Nazwisko
+            </div>
+            <div>
+              e-mail:
+            </div>
+            <div>
+              Numer telefonu:
+            </div>
+            <div>
+              Numer tablicy rejestracyjnej:
+            </div>
+            <div>
+              Miejsce parkingowe:
+            </div>
+            <div>
+              Status:
+            </div>
+            <div>
+              Operacje:
+            </div>
+          </div>
+        </ion-col>
       </ion-row>
       <ion-row *ngFor="let singleRes of reservations">
         <ion-col size="12">
-          {{singleRes.status}}
+          <div class="reservation-list__item">
+            <div>
+              {{singleRes.id}}
+            </div>
+            <div>
+              {{singleRes.name}}
+            </div>
+            <div>
+              {{singleRes.surname}}
+            </div>
+            <div>
+              {{singleRes.email}}
+            </div>
+            <div>
+              {{singleRes.phone}}
+            </div>
+            <div>
+              {{singleRes.parkingPlateNumber}}
+            </div>
+            <div>
+              {{singleRes.parkingSpot}}
+            </div>
+            <div>
+              <span [ngClass]="singleRes.status | statusMark" class="reservation-list__status-mark"></span>
+              {{singleRes.status | statusName}}
+            </div>
+            <div>
+              <ion-buttons slot="start">
+                <ion-button size='small' (click)="updateReservation(singleRes.id, 1)">
+                  <ion-icon size='small' slot="icon-only" name="checkmark"></ion-icon>
+                </ion-button>
+                <ion-button size='small' (click)="updateReservation(singleRes.id, 2)">
+                  <ion-icon size='small' slot="icon-only" name="close"></ion-icon>
+                </ion-button>
+                <ion-button size='small' (click)="removeReservation(singleRes.id)">
+                    <ion-icon size='small' slot="icon-only" name="trash"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </div>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>

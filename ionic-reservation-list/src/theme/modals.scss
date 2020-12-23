@@ -87,3 +87,15 @@ ion-button {
         border-radius: 10px;
     }
 }
+
+// klasy używane przez status-mark.pipe
+
+.status-rejected{
+  background-color: var(--ion-color-danger);
+  border: 1px solid var(--ion-color-danger) !important;
+}
+
+.status-accepted{
+  background-color: var(--ion-color-tertiary);
+  border: 1px solid var(--ion-color-tertiary) !important;
+}

@@ -23,7 +23,7 @@ export class ModalPage implements OnInit {
   }
 
   invitation: Partial<Invitation> = {
-    status: 1,
+    status: 0,
   };
   hideParkingReservation: boolean = true;
   loading: any;
@@ -40,7 +40,9 @@ export class ModalPage implements OnInit {
       // TODO setIimeout mi się nie podoba, może będzie się dało jakoś poprawić 
       setTimeout(() => {
         this.loading.dismiss();
+        this.hideModal();
         this.showAlert();
+        this.httpService.getInvitationList().subscribe()
       }, 200)
 
     })
@@ -62,12 +64,7 @@ export class ModalPage implements OnInit {
     this.alertController.create({
       header: 'Zaproszenie zostało dodane',
       cssClass: 'alert-container',
-      buttons: [{
-        text: 'ok',
-        handler: () => {
-          this.hideModal();
-        }
-      }]
+      buttons: ['ok']
     }).then(alertEl => {
       alertEl.present();
     })
