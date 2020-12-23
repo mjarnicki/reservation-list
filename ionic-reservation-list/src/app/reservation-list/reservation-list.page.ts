@@ -30,6 +30,7 @@ export class ReservationListPage implements OnInit {
         this.dictionaryLoadFlag = true;
       });
     }
+   
   }
 
   loadDictionary() {

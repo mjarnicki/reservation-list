@@ -1,11 +1,11 @@
 export interface Invitation {
     id: number, 
     name: string, 
-    surName: string,
-    eMail: string,
-    phoneNumber: string,
+    surname: string,
+    email: string,
+    phone: string,
     parkingReservation: boolean,
     parkingPlateNumber?: string,
     parkingSpot?: string,
-    status: 1
+    status: number
 }

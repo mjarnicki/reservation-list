@@ -1,5 +1,89 @@
-<ion-title>modal</ion-title>
+<ion-header class="ion-no-border ion-padding">
+    <ion-toolbar>
+        <ion-buttons slot="start" class="ion-padding-start">
+            <ion-button (click)="hideModal()" class="modal__return-button">
+                <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            <h1 class="modal__header">
+                Dodaj gościa
+            </h1> 
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
 
-<ion-content>
+<div class="inner-content">
+    <form (ngSubmit)="logForm()" class="ion-padding-horizontal" #form="ngForm">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-md="6" size="12" class="ion-no-padding">
+                    <ion-item lines="none">
+                        <ion-label position="stacked">Imię:<sup>*</sup></ion-label>
+                        <ion-input [(ngModel)]="invitation.name" type="text" name="name" required></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size-md="6" size="12" class="ion-no-padding">
+                    <ion-item lines="none">
+                        <ion-label position="stacked">Nazwisko:<sup>*</sup></ion-label>
+                        <ion-input [(ngModel)]="invitation.surname" type="text" name="surname" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-margin-top">
+                <ion-col size="12" class="ion-no-padding">
+                    <ion-item lines="none">
+                        <ion-label position="stacked">E-mail:<sup>*</sup></ion-label>
+                        <ion-input [(ngModel)]="invitation.email" type="email" name="email" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-margin-top">
+                <ion-col size="12" class="ion-no-padding">
+                    <ion-item lines="none">
+                        <ion-label position="stacked" class="ion-margin-bottom">Numer telefonu:<sup>*</sup></ion-label>
+                        <ion-input [(ngModel)]="invitation.phone" type="tel" name="phone" required></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            
+            <ion-row class="ion-margin-top">
+                <ion-col size="12" class="ion-no-padding">
+                    <ion-item lines="full" (click)="toggleParkingReservation()" class="ion-item">
+                        <ion-label class="modal__label-checkbox">Rezerwacja miejsca parkingowego</ion-label>
+                        <ion-checkbox color="primary" slot="start" [(ngModel)]="invitation.parkingReservation" name="parkingReservation"></ion-checkbox>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
 
-</ion-content>
+            <div [hidden]="hideParkingReservation">
+                <ion-row class="ion-margin-top">
+                    <ion-col size="12" class="ion-no-padding">
+                        <ion-item lines="none">
+                            <ion-label position="stacked" class="ion-margin-bottom">Numer tablicy rejestracyjnej:</ion-label>
+                            <ion-input [(ngModel)]="invitation.parkingPlateNumber" type='text' name="parkingPlateNumber" ></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="ion-margin-top">
+                    <ion-col size="12" class="ion-no-padding">
+                        <ion-item lines="none">
+                            <ion-label position="stacked" class="ion-margin-bottom">Miejsce parkingowe:</ion-label>
+                            <ion-input [(ngModel)]="invitation.parkingSpot" type='number' name="parkingSpot" ></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </div>
+                        
+            <ion-row class="ion-margin-top ion-padding">
+                <ion-col size="12" class="ion-no-padding ion-text-end">
+                    <ion-button type="submit" color="primary" [disabled]="form.invalid">
+                        Dodaj gościa
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </form>
+</div>

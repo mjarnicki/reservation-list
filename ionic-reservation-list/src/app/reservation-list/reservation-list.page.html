@@ -3,13 +3,18 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button (click)="newInvitationOpenModal()">
+          <ion-button (click)="newInvitationOpenModal()" color="primary">
             <ion-icon slot="start" name="add"></ion-icon> Nowe zaproszenie
           </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6"></ion-col>
+        <ion-col size="12">Tutaj będzie nagłówek</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let singleRes of reservations">
+        <ion-col size="12">
+          {{singleRes.status}}
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
