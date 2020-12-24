@@ -54,43 +54,75 @@
 
         <!-- widok mobilny -->
         <ion-row *ngIf="!showMobile">
-          <ion-col size="6" *ngFor="let singleRes of reservations">
+          <ion-col size="12" size-lg="4" size-md="4" size-sm="6" *ngFor="let singleRes of reservations" class="ion-justify-content-center">
             <ion-card class="reservation-list__item-mobile" lines="none">
-                <ion-card-subtitle>
-                  <span [ngClass]="singleRes.status | statusMark" class="reservation-list__status-mark"></span>
-                  {{singleRes.status | statusName}}
-                </ion-card-subtitle>
-                <ion-card-header>
-                  <ion-card-subtitle>{{singleRes.id}}</ion-card-subtitle>
-                  <ion-card-title>{{singleRes.name}} {{singleRes.surname}}</ion-card-title>
-                </ion-card-header>
-              <div>{{singleRes.email}}</div>
-              <div>{{singleRes.phone}}</div>
-              <div>{{singleRes.parkingPlateNumber}}</div>
-              <div>{{singleRes.parkingSpot}}</div>
-              <div>
                 
-              </div>
-              <div>
-                <ion-buttons slot="start">
-                  <ion-button size='small' (click)="updateReservation(singleRes.id, 1)">
-                    <ion-icon size='small' slot="icon-only" name="checkmark"></ion-icon>
-                  </ion-button>
-                  <ion-button size='small' (click)="updateReservation(singleRes.id, 2)">
-                    <ion-icon size='small' slot="icon-only" name="close"></ion-icon>
-                  </ion-button>
-                  <ion-button size='small' (click)="removeReservation(singleRes.id)">
-                      <ion-icon size='small' slot="icon-only" name="trash"></ion-icon>
-                  </ion-button>
-                </ion-buttons>
-              </div>
+                <ion-card-subtitle class="reservation-list__item-mobile-subtitle">
+                  <div>
+                    <span [ngClass]="singleRes.status | statusMark" class="reservation-list__status-mark"></span>
+                    {{singleRes.status | statusName}}
+                  </div>
+                  <div>
+                    {{singleRes.id}}
+                  </div>
+                </ion-card-subtitle>
+
+                <ion-card-header class="ion-no-padding">
+                  <ion-card-title class="reservation-list__item-mobile-title" >{{singleRes.name}} {{singleRes.surname}}</ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content class="ion-no-padding">
+                  <ion-grid class="ion-no-padding">
+                    <ion-row>
+                      <ion-col class="ion-no-padding">
+                        <div class="reservation-list__item-mobile-info">
+                          <ion-icon slot="start" name="mail-outline" class="ion-margin-end"></ion-icon>
+                          {{singleRes.email}}
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="ion-no-padding">
+                        <div class="reservation-list__item-mobile-info">
+                          <ion-icon slot="start" name="call-outline" class="ion-margin-end"></ion-icon>
+                          {{singleRes.phone}}
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row class="reservation-list__item-mobile-row-min-height">
+                      <ion-col class="ion-no-padding" *ngIf="singleRes.parkingPlateNumber">
+                        <div class="reservation-list__item-mobile-info">
+                          <ion-icon slot="start" name="car-outline" class="ion-margin-end"></ion-icon>
+                          {{singleRes.parkingPlateNumber}}
+                        </div>
+                      </ion-col>
+                      <ion-col class="ion-no-padding" *ngIf="singleRes.parkingSpot">
+                        <div class="reservation-list__item-mobile-info ion-justify-content-center">
+                          <ion-icon slot="start" name="scan-outline" class="ion-margin-end"></ion-icon>
+                          {{singleRes.parkingSpot}}
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  <div>
+                    <ion-buttons slot="start" class="ion-justify-content-evenly">
+                      <ion-button size='small' (click)="updateReservation(singleRes.id, 1)">
+                        <ion-icon size='small' slot="icon-only" name="checkmark"></ion-icon>
+                      </ion-button>
+                      <ion-button size='small' (click)="updateReservation(singleRes.id, 2)">
+                        <ion-icon size='small' slot="icon-only" name="close"></ion-icon>
+                      </ion-button>
+                      <ion-button size='small' (click)="removeReservation(singleRes.id)">
+                          <ion-icon size='small' slot="icon-only" name="trash"></ion-icon>
+                      </ion-button>
+                    </ion-buttons>
+                  </div>
+                </ion-card-content>
             </ion-card>
           </ion-col>
         </ion-row>
 
-      <ng-container>
-
-      </ng-container>
+        <a routerLink="/testowa">testowa strona</a>
 
     </ion-grid>
   </div>

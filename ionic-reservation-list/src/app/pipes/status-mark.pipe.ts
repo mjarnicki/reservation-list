@@ -7,9 +7,9 @@ export class StatusMarkPipe implements PipeTransform {
 
   transform(value: number): string {
     if (value == 1) {
-      return "status-accepted"
+      return "reservation-list__status-mark--accepted"
     } else if (value == 2) {
-      return "status-rejected"
+      return "reservation-list__status-mark--rejected"
     }
 
   }

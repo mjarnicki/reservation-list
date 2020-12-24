@@ -22,15 +22,15 @@ export class ReservationListPage implements OnInit {
   ngOnInit() {
 
     const dictionaryFromLocalStorage = localStorage.getItem('dictionary');
-    
+    // Rozwiązanie na ograniczenie wysyłania requestu po słownik tylko do pierwszego wczytania strony:
     // jeżeli w local storage jest słownik, to przypisuję do zmiennej słownik z local storage i ładuję rezerwacje 
-    if(dictionaryFromLocalStorage) {
+    if (dictionaryFromLocalStorage) {
       
       this.httpService.dictionary = dictionaryFromLocalStorage;
       this.loadReservations();
-
-    } else {
-      // jeżeli nie ma słownika, to najpierw ładuję słownik, a później rezerwacje
+    } 
+    // jeżeli nie ma słownika, to najpierw ładuję słownik, a później rezerwacje
+    else {
       this.httpService.loadDictionary().subscribe(dictionaryResp => {
         
         localStorage.setItem('dictionary', dictionaryResp.toString());

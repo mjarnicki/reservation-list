@@ -1,22 +1,32 @@
 {
   "invitations": [
     {
-      "id": 1,
+      "status": 1,
       "name": "Jan",
       "surname": "Kowalski",
-      "eMail": "",
-      "phone": "+48555444851",
+      "email": "jan.kowalski@test.pl",
+      "phone": "+48 123456789",
       "parkingReservation": true,
-      "parkingPlateNumber": "WY832492",
-      "parkingSpot": "45",
-      "status": 1
+      "parkingPlateNumber": "WUD625152",
+      "parkingSpot": 12,
+      "id": 1
     },
     {
-      "status": 1,
-      "name": "asdf",
-      "surname": "asdf",
-      "email": "asdf",
-      "phone": "asdf",
+      "status": 0,
+      "name": "Stanisław",
+      "surname": "Iksiński",
+      "email": "staszek65@wp.pl",
+      "phone": "+48987541264",
+      "id": 2
+    },
+    {
+      "status": 2,
+      "name": "Magdalena",
+      "surname": "Stolarska",
+      "email": "kiciakocia84@onet.onet",
+      "phone": "548156248",
+      "parkingReservation": true,
+      "parkingPlateNumber": "WU854126",
       "id": 3
     }
   ],
