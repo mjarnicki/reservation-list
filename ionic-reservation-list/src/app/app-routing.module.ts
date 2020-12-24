@@ -14,11 +14,7 @@ const routes: Routes = [
   {
     path: 'modal',
     loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
-  },
-  {
-    path: 'testowa',
-    loadChildren: () => import('./testowa/testowa.module').then( m => m.TestowaPageModule)
-  },
+  }
 ];
 
 @NgModule({
