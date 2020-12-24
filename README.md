@@ -6,5 +6,5 @@ Poza odwzorowaniem projektu dorobiłem też kilka funkcjonalności, żeby potest
 
 ## Uruchomienie
 
-Po ściągnięciu repozytorium konieczne jest uruchomienie testowej bazy danych, oraz samego projektu. Bazę uruchamia się wpisując **json-server --watch db.json** w folderze głównym. Projekt natomiast w folderze "ionic-reservation-list" wpisując "ionic s"
+Po ściągnięciu repozytorium konieczne jest uruchomienie testowej bazy danych, oraz samego projektu. Bazę uruchamia się wpisując **json-server --watch db.json** w folderze głównym. Projekt natomiast w folderze "ionic-reservation-list" najpierw instalując zależności **npm-i** a następnie uruchamiając projest wpisując **ionic s**
 
